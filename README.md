@@ -4,7 +4,7 @@
 The program is designed to convert bootanimation.zip/Splash.img to the archive flashable in TWRP
   - Convert bootanimations to TWRP archives
   - Convert Splashs to TWRP archives
-###### Supported langs = ru
+###### Supported langs = russian, english, esperanto, japanese
 ## Installation
 #### In Windows
 1)Using Python
