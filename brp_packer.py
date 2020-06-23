@@ -1,7 +1,7 @@
 ﻿from shutil import make_archive, copytree, copy2, rmtree, unpack_archive
 from tkinter.messagebox import showerror, showinfo, showwarning
 from os.path import getsize, join
-from os import walk, mkdir, rename, rmdir
+from os import walk, mkdir, rename, remove
 from tkinter import Tk, Button
 from tkinter.filedialog import askopenfilename
 from random import randrange as rr
@@ -13,15 +13,18 @@ class BRP_PACKER:
     def __init__(self):
         self.del_temp()
         self.make_lang()
-        unpack_archive('resources.zip')
-        unpack_archive('./updaters.zip')
+        self.unpack_data()
         if not self.check_files():
             self.exit_of_programm()
         self.show_FAQ()
-        unpack_archive('./programm_resources.zip')
         self.bootanimation = False
         self.main_window()
 
+    def unpack_data(self):
+        unpack_archive('resources.zip')
+        unpack_archive('./updaters.zip')
+        unpack_archive('./programm_resources.zip')
+        
     def make_lang(self):
         locale_str = getdefaultlocale()[0]
         if 'ru' in locale_str:
@@ -82,34 +85,19 @@ class BRP_PACKER:
                 'something might go wrong'
 
     def del_temp(self):
-        try:
-            rmdir('./icon.ico')
-        except:
-            pass
-        try:
-            rmdir('./programm_resources.zip')
-        except:
-            pass
-        try:
-            rmdir('./updaters.zip')
-        except:
-            pass
-        try:
-            rmtree('./bootanimation_archive')
-        except:
-            pass
-        try:
-            rmtree('./temp')
-        except:
-            pass
-        try:
-            rmtree('./programm_resources')
-        except:
-            pass
-        try:
-            rmtree('./updaters')
-        except:
-            pass
+        files = ['./icon.ico', './programm_resources.zip', './updaters.zip']
+        dirs = ['./bootanimation_archive', './temp',
+                './programm_resources', './updaters', './__pycache__']
+        for file in files:
+            try:
+                remove(file)
+            except:
+                pass
+        for dir_ in dirs:
+            try:
+                rmtree(dir_)
+            except:
+                pass
 
     def make_bootanimation_archive(self):
         if not self.bootanimation:
@@ -200,7 +188,7 @@ class BRP_PACKER:
         else:
             showerror(
                 title='UNKOWN ERROR',
-                message=f'{message}, {title}, -|- ERROR')
+                message=f'{message}, {title}, ERROR')
 
     def get_size(self, directory):
         total_size = 0
@@ -226,12 +214,12 @@ class BRP_PACKER:
         return True
 
     def exit_of_programm(self):
-        self.window.iconify()
-        sleep(0.3)
         try:
-            self.del_temp()
+            self.window.iconify()
         except:
-            pass        
+            pass
+        sleep(0.3)
+        self.del_temp()
         try:
             self.window.destroy()
             self.window.quit()
