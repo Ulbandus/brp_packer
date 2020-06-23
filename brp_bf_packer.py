@@ -7,7 +7,7 @@ from tkinter.filedialog import askopenfilename
 from random import randrange as rr
 from tkinter.ttk import Combobox
 
-class BRP_BS_PACKER:
+class BRP_PACKER:
     def __init__(self):
         self.del_temp()
         if not self.check_files():
@@ -28,7 +28,7 @@ class BRP_BS_PACKER:
         if not self.bootanimation:
             self.showmessage('ERROR', 'Файл не выбран', 'error')
             return
-        copytree('./resources/', './bootanimation_archive/')
+        copytree('./programm_resources/', './bootanimation_archive/')
         if self.type_of_archive.get() == 'Splash':
             copy2(self.bootanimation, './bootanimation_archive/')
         else:
@@ -46,7 +46,7 @@ class BRP_BS_PACKER:
 
     def main_window(self):
         self.window = Tk()
-        self.window.title('BRP B/S PACKER | by @Ulbandus (4pda)')
+        self.window.title('BRP PACKER | by @Ulbandus')
         self.window.geometry('304x27')
         self.window.tkraise()
         self.window.iconbitmap('icon.ico')
@@ -137,4 +137,4 @@ class BRP_BS_PACKER:
             pass
         exit()
 
-BRP_BF_PACKER()
+BRP_PACKER()
