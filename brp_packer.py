@@ -83,6 +83,10 @@ class BRP_PACKER:
 
     def del_temp(self):
         try:
+            rmdir('./icon.ico')
+        except:
+            pass
+        try:
             rmdir('./programm_resources.zip')
         except:
             pass
