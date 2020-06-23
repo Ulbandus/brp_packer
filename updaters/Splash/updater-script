@@ -1,0 +1,7 @@
+ui_print("BOOTANIMATION CREATED USING:");
+ui_print("BRP B/F PACKER");
+ui_print("by @Ulbandus (4pda)");
+ui_print("FLASHING SPLASH LOGO");
+package_extract_file("splash.img", "/dev/block/bootdevice/by-name/splash");
+ui_print("SUCCESS");
+sleep(1);
