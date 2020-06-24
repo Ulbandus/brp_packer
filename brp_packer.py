@@ -205,7 +205,7 @@ class BRP_PACKER:
                 self.resources_error_message,
                 'warning')
             return False
-        if not self.get_size('./updaters/') == 724972:
+        if not str(self.get_size('./updaters/'))[:3] == '725':
             self.showmessage(
                 'Updaters ERROR',
                 self.updaters_error_message,
