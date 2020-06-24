@@ -12,11 +12,11 @@ The program is designed to convert bootanimation.zip/Splash.img to the archive f
 1) Go to https://github.com/Ulbandus/brp_packer/archive/master.zip
 2) Extract arvhive
 3) Install Python3 ("https://realpython.com/installing-python/")
-4) Launch brp_bf_packer.py
+4) Launch brp_packer.py
 ```
 2)Without using Python
 ```sh
-1) Go to https://github.com/Ulbandus/brp_packer/raw/master/exe_version.zip
+1) Go to https://github.com/Ulbandus/brp_packer/raw/master/brp_packer_exe.zip
 2) Extract archive
 3) Launch brp_bf_packer.exe
 ```
@@ -25,7 +25,7 @@ The program is designed to convert bootanimation.zip/Splash.img to the archive f
 $ apt-get install python3 git / pacman -S python3 git
 $ pip install tkinter
 $ git clone https://github.com/Ulbandus/brp_packer.git
-$ python3 brp_bf_packer.py
+$ python3 brp_packer.py
 ```
 
 ### Using
